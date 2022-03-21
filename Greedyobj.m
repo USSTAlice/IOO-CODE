@@ -4,6 +4,7 @@ global DIS nodeset s
 xx=setdiff(randperm(size(nodeset,1)),X);
 k=size(nodeset,1)-size(X,2);
 usedcap=[];
+l=100
 xij=struct();
 for i = 1:size(X,2)
     usedcap(i) = 0;
@@ -36,9 +37,9 @@ while k>0
 end
 cost=0;
 for i = 1:size(X,2)
-    cost=cost+sum(nodeset(xij(i).allo,4).*(DIS(X(i),xij(i).allo).'*0.175425*0.686*1.48586+0.5*10.8777));
+    cost=cost+l*sum(nodeset(xij(i).allo,4).*(DIS(X(i),xij(i).allo).'*0.175425*0.686*1.48586+0.5*10.8777));
 end
-obj=0.08*1.08^20/(1.08^20-1)*size(X,2)*1.076*20000000+36500*cost;
+obj=0.08*1.08^20/(1.08^20-1)*size(X,2)*1.076*20000000+365*cost;
 f=obj;
 vector=X;
 end

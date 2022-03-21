@@ -1,9 +1,12 @@
 clear;clc;close all;
-load DIS.mat
-load node.mat
+load case4.mat
+p=2
+l=100
+DIS=Distance(nodeset)%load DIS.mat
 tic
 dis=DIS*0.175425*0.686*1.48586+0.5*10.8777
-for i = 1:66
+d(1:size(nodeset,1),1)=nodeset(1:size(nodeset,1),4)
+for i = 1:size(nodeset,1)
     d(:,i)=d(:,1);
 end
 n=size(d,1)
@@ -16,7 +19,7 @@ end
 %% 
 x=binvar(n,n,'full');
 y=binvar(1,n,'full');
-z=sum(sum(d.*dis.*x))*36500+0.08*1.08^20/(1.08^20-1)*10*1.076*20000000;
+z=sum(sum(l*d.*dis.*x))*365+0.08*1.08^20/(1.08^20-1)*p*1.076*20000000;
 %%
 C=[];
 for i = 1:n
@@ -24,7 +27,7 @@ for i = 1:n
     C=[C,s==1];
 end
 s=sum(y);
-C=[C,s==10];
+C=[C,s==p];
 for j= 1:n
     s=sum(d(:,j).*x(:,j))-20*y(j);
     C=[C,s<=0]

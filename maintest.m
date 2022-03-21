@@ -95,7 +95,7 @@ for i = 1:G
     P2=bestselect(individuals,p1+p2,p2);
     temp=find(individuals.fitness==max(individuals.fitness));
     gbest=P2.facility(1,:);
-    for p = 1:100 %Calculate 40 times to get the best result
+    for p = 1:100 %Calculate times to get the best result
         [~,temp,~]=Greedyobj(gbest);
         box=[]
         while isequal(temp,NaN)
