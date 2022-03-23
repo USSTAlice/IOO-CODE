@@ -1,8 +1,8 @@
 clear;clc;close all;
-load case4.mat
-p=2
+load node.mat
+p=10
 l=100
-DIS=Distance(nodeset)%load DIS.mat
+load DIS.mat
 tic
 dis=DIS*0.175425*0.686*1.48586+0.5*10.8777
 d(1:size(nodeset,1),1)=nodeset(1:size(nodeset,1),4)
