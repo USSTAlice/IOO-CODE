@@ -3,8 +3,8 @@ clear all;
 %% Initialize an antibody population  in a random way;
 tic
 load node.mat;
+load DIS.mat
 d=10*s
-DIS=Distance(nodeset)
 global DIS nodeset s
 p=10
 G=150
